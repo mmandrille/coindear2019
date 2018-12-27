@@ -25,7 +25,7 @@ SECRET_KEY = '_dp1os$lxtbke64jtgbkja9edx7^$w%sg)ysxf%pdc3#m1pf)@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'coindear.jujuy.gob.ar',]
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #Desarrollos personales
     'core.apps.CoreConfig',
     'calendario.apps.CalendarioConfig',
+    'inscripciones.apps.InscripcionesConfig',
 ]
 
 MIDDLEWARE = [

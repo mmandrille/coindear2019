@@ -2427,12 +2427,13 @@ section.coindear
 
 .quees .btn-primary
 {
-     color: #fff;
-     background-color: #1591cd;
+    color: #fff;
+    background-color: #1591cd;
     border-color: #1787bd;
     min-width: 450px;
     margin-bottom: 10px;
     margin-top: 10px;
+    
 }
 
 /* FIN QUE ES */
