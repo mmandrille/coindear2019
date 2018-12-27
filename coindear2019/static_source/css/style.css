@@ -2827,7 +2827,7 @@ background: url(./img/tilcara.jpg);
 
 section.inscripcion .inscripcion-container
 {
-    background: #55547e;
+    background: #597380;
     max-width: 500px;
     margin: auto;
     border-radius: 10px;
@@ -2838,7 +2838,7 @@ section.inscripcion .inscripcion-container
 
 section.inscripcion .inscripcion-container h2
 {
-    background: #55547e;
+    background: #455b66;
     padding: 10px;
     text-align: center;
     font-size: 1.5em;
@@ -2861,7 +2861,7 @@ section.inscripcion label
 }
 
 section.inscripcion button{
-    background: #55547e;
+    background: #455b66;
     border: none;
     margin: auto;
     font-size: 1.1em;
