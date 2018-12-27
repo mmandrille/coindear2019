@@ -16,7 +16,7 @@ position: absolute;
     position: fixed;
     height: 70px;
     z-index: 11;
-    background-color: #1591cd;
+    background-color: #597380;
     box-shadow: 0 3px 25px #000000a3;
     top: 0;
 }
@@ -94,7 +94,7 @@ main {
 
 .contenedor::after
 {
-content: "#PactoSxE";
+content: "Coindear2019";
     color: #f4d4e1;
     position: absolute;
     right: 40px;
@@ -2160,37 +2160,37 @@ body.transparencia h1
 
 /* PACTO SOCIAL EDUCACION */
 
-.pacto-social
+.coindear
 {
     background-color: white;
     box-shadow: 0 0 20px #bbb;
 }
 
-.pacto-social .jumbo img
+.coindear .jumbo img
 {
     width: 350px;
     max-width: 100%;
     margin: auto;
 }
 
-.pacto-social .jumbo .contenedor-logo
+.coindear .jumbo .contenedor-logo
 {
     padding: 20px;
 }
 
-.pacto-social .jumbo .contenedor-texto
+.coindear .jumbo .contenedor-texto
 {
     text-align: justify;
     font-size: 1.2em;
 }
 
-.pacto-social .jumbo ul.lista
+.coindear .jumbo ul.lista
 {
     padding: 0;
     list-style: none;
 }
 
-.pacto-social .jumbo ul.lista li
+.coindear .jumbo ul.lista li
 {
     margin: 10px;
     padding: 10px;
@@ -2199,40 +2199,40 @@ body.transparencia h1
     border-radius: 2px;
 }
 
-.pacto-social .panel
+.coindear .panel
 {
     margin: 20px 25px;
     border: none;
     box-shadow: 0 0 15px #ddd;
 }
 
-.pacto-social h2.center
+.coindear h2.center
 {
     text-align: center;
 }
 
-.sub-pagina.pacto-social #slider-overlay, .sub-pagina.pacto-social #slider-container
+.sub-pagina.coindear #slider-overlay, .sub-pagina.coindear #slider-container
 {
     height: 500px;
 }
 
-.sub-pagina.pacto-social #slider-container
+.sub-pagina.coindear #slider-container
 {
     background-position-y: -350px !important;
 }
 
-.sub-pagina.pacto-social #title-container
+.sub-pagina.coindear #title-container
 {
     top: 420px;
 }
 
-section.pacto-social
+section.coindear
 {
     padding: 10px;    
     border-top: 10px solid #119d4a;
 }
 
-.pacto-social .jumbo.row2
+.coindear .jumbo.row2
 {
     display: table;
     border-top: 10px solid #169ad4;
@@ -2240,7 +2240,7 @@ section.pacto-social
     margin: auto;
 }
 
-.pacto-social .boton
+.coindear .boton
 {
     color: white;
     padding: 10px;
@@ -2252,7 +2252,7 @@ section.pacto-social
     box-shadow: 0 0 10px #888;
 }
 
-.pacto-social .banner
+.coindear .banner
 {
     text-align: center;
     background: #d81374;
@@ -2262,29 +2262,29 @@ section.pacto-social
     box-shadow: 0 0 15px #bbb;
 }
 
-.pacto-social .panel-heading
+.coindear .panel-heading
 {
     background: #119c4a;
     color: white;
     box-shadow: 0 0 10px #bbb;
 }
 
-.pacto-social .panel-heading.color2
+.coindear .panel-heading.color2
 {
     background: #e6831a;   
 }
 
-.pacto-social .panel-heading.color3
+.coindear .panel-heading.color3
 {
     background: #d81274;  
 }
 
-.pacto-social .panel-heading.color4
+.coindear .panel-heading.color4
 {
     background: #5b2784;
 }
 
-.pacto-social .boton2
+.coindear .boton2
 {
     background: #e6831a;
     color: white;
@@ -2297,38 +2297,38 @@ section.pacto-social
     margin-bottom: 20px;
 }
 
-.pacto-social .boton2.color1
+.coindear .boton2.color1
 {
     background: #7cb621;
 }
 
-.pacto-social .boton2.color2
+.coindear .boton2.color2
 {
     background: #119d4a;
 }
 
-.pacto-social .boton.color1
+.coindear .boton.color1
 {
     background-color: #7cb621;
 }
 
-.pacto-social .boton.color2
+.coindear .boton.color2
 {
     background-color: #d81274;
 }
 
-.pacto-social .contenedor-texto span.triangle{
+.coindear .contenedor-texto span.triangle{
     position: absolute;
     left: 210px;
     top: auto;
     margin-top: -50px;
 }
 
-.pacto-social .contenedor-texto span.triangle.color1{
+.coindear .contenedor-texto span.triangle.color1{
     color: #7cb621;
 }
 
-.pacto-social .contenedor-texto span.triangle.color2{
+.coindear .contenedor-texto span.triangle.color2{
     color: #d81274;
 }
 
@@ -2362,7 +2362,7 @@ section.pacto-social
 .menu-principal .icono-quees
 {
  background-image: url(../img/icono-quees.png);
- background-color: #db8e2b;
+ background-color: #1592cd;
 }
 
 .menu-principal .icono-dialoguemos

@@ -6,7 +6,6 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 #Agregamos modulos personales
 from .models import Faq
-from .models import Texto
 from .forms import SignUpForm
 
 def home(request):
@@ -16,9 +15,8 @@ def contacto(request):
     return render(request, 'contacto.html', { })
 
 def faq(request):
-    textos = Texto.objects.all()
     faqs = Faq.objects.all()
-    return render(request, 'faq.html', {'textos' : textos, 'faqs' : faqs })
+    return render(request, 'faq.html', {'faqs' : faqs })
 
 def signup(request):
     if request.method == 'POST':
