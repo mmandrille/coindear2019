@@ -104,14 +104,14 @@ content: "Coindear2019";
     background: white;
 }
 
-.btn-login.nomob a, .btn-register a
+.btn-inscripcion.nomob a, .btn-register a
 {
     font-size: 12px !important;
     font-weight: lighter;
     border-radius: 5px;
 }
 
-.btn-login.nomob a
+.btn-inscripcion.nomob a
 {
     background: #1e9edc;
     margin-left: 20px;
@@ -176,13 +176,13 @@ ul.menu-principal li span.texto
     text-align: center;
 }
 
-ul.login
+ul.inscripcion
 {
  list-style: none;
     text-align: center;
 }
 
-ul.login li
+ul.inscripcion li
 {
  display: inline-block;
     background: #70277d;
@@ -194,10 +194,10 @@ ul.login li
     margin-right: 5px;
 }
 
-ul.login li a,
-ul.login li a:hover,
-ul.login li a:active,
-ul.login li a:focus{
+ul.inscripcion li a,
+ul.inscripcion li a:hover,
+ul.inscripcion li a:active,
+ul.inscripcion li a:focus{
  color: white;
 }
 
@@ -2158,7 +2158,7 @@ body.transparencia h1
 
 /* FIN TRANSPARENCIA */
 
-/* PACTO SOCIAL EDUCACION */
+/* COINDEAR 2019 */
 
 .coindear
 {
@@ -2332,7 +2332,7 @@ section.coindear
     color: #d81274;
 }
 
-/* FIN PACTO SOCIAL EDUCACION */
+/* FIN COINDEAR 2019 */
 
 /* ICONOS HOME */
 
@@ -2811,6 +2811,102 @@ section.login button:hover
 }
 
 /* FIN LOGIN */
+
+/* inscripcion */
+
+
+section.inscripcion
+{
+background: url(./img/tilcara.jpg);
+    width: 100%;
+    height: 100%;
+    height: calc(70vh - 100px);
+    padding-top: 7em;
+    background-size: cover;
+}
+
+section.inscripcion .inscripcion-container
+{
+    background: #55547e;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 10px;
+    padding: 0;
+    z-index: 1;
+    color: rgb(7, 7, 7); 
+}
+
+section.inscripcion .inscripcion-container h2
+{
+    background: #55547e;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+section.inscripcion .input-group
+{
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+section.inscripcion label
+{
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+section.inscripcion button{
+    background: #55547e;
+    border: none;
+    margin: auto;
+    font-size: 1.1em;
+    padding: 7px 20px;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+section.inscripcion a.signup
+{
+    color: #ddd;
+    display: block;
+    text-align: center;
+    padding-bottom: 15px;
+    padding-top: 7px;
+}
+
+section.inscripcion a.signup:hover,
+section.inscripcion button:hover
+{
+   opacity: 0.9;
+   text-decoration: none;
+}
+
+.inscripcion-overlay
+{
+    background: #00000075;
+    display: block;
+    width: 100%;
+    height: calc(100vh - 60px);
+    z-index: 0;
+    position: absolute;
+    top: 60px;
+}
+
+.inscripcion-overlay-ignore
+{
+   z-index : 1;
+   position: absolute;
+   width: 100%;
+}
+
+/* FIN inscripcion */
 
 /* Registro */
 

@@ -3,7 +3,7 @@ from django.urls import path
 #Import de modulos personales
 from . import views
 
-app_name = 'calendario'
+app_name = 'inscripciones'
 urlpatterns = [
-    url('', views.calendario, name='calendario'),
+    url('', views.inscripcion, name='inscripcion'),
 ]

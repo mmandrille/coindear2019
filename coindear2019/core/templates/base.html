@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}Pacto Social Educativo{% endblock %}</title>
+    <title>{% block title %}Coindear 2019{% endblock %}</title>
 
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}" />
@@ -74,39 +74,40 @@
       {% block content %}
       
       {% endblock %}
-        <br>
-        <footer>
-          <div class="social">
-            <a href="https://www.facebook.com/">
-             <span class="icon icon-facebook"></span>
-            </a>
-            <a href="https://twitter.com/">
-             <span class="icon icon-twitter"></span>
-            </a>
-            <a href="https://www.youtube.com/">
-             <span class="icon icon-youtube"></span>
-            </a>
-            <a href="https://www.instagram.com/">
-             <span class="icon icon-instagram"></span>
-            </a>
+
+      <br>
+      <footer>
+        <div class="social">
+          <a href="https://www.facebook.com/">
+            <span class="icon icon-facebook"></span>
+          </a>
+          <a href="https://twitter.com/">
+            <span class="icon icon-twitter"></span>
+          </a>
+          <a href="https://www.youtube.com/">
+            <span class="icon icon-youtube"></span>
+          </a>
+          <a href="https://www.instagram.com/">
+            <span class="icon icon-instagram"></span>
+          </a>
+        </div>
+        
+        <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+          <div class="seguinos-titulo">
+            <p class="seguinos"><span>#Seguinos</span> en nuestras Redes Sociales</p>
+            <h4>CONVENCIÓN INTERNACIONAL DE ARCHIVISTAS</h4>
           </div>
-          
-          <div class="row">
-          <div class="col-md-4 col-md-offset-1">
-            <div class="seguinos-titulo">
-              <p class="seguinos"><span>#Seguinos</span> en nuestras Redes Sociales</p>
-              <h4>CONVENCIÓN INTERNACIONAL DE ARCHIVISTAS</h4>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <img src="{% static 'img/logo.png' %}" class="logo"/>
-          </div>
-          <div class="col-md-3">
-            <img src="{% static 'img/logo2.png' %}" class="logo" style="margin-top: 10px"/>
-          </div>
-          </div>
-          
-        </footer>
+        </div>
+        <div class="col-md-3">
+          <img src="{% static 'img/logo.png' %}" class="logo"/>
+        </div>
+        <div class="col-md-3">
+          <img src="{% static 'img/logo2.png' %}" class="logo" style="margin-top: 10px"/>
+        </div>
+        </div>
+        
+      </footer>
     </main>
     
     {% load static %}

@@ -34,4 +34,5 @@ urlpatterns = [
     #Apps Propias
     path('', include('core.urls', namespace='core_app')),
     path('calendario/', include('calendario.urls')),
+    path('inscribir/', include('inscripciones.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
