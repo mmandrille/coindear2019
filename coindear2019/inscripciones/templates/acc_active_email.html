@@ -1,0 +1,7 @@
+{% autoescape off %}
+Bienvenido {{ inscripto.nombres }} {{ inscripto.apellido }},
+Por favor ingresa a este link para confirmar tu inscripcion a la Convencion Internacional de Archivistas 2019,
+Que se Realizara en San Salvador de Jujuy:
+http://coindear.jujuy.gob.ar/inscribir/activate/{{inscripto.pk}}/{{token}}
+A travez de este correo recibiras las notificaciones y noticias importantes del evento.
+{% endautoescape %}

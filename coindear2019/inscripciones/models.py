@@ -36,6 +36,7 @@ class Inscriptos(models.Model):
     web = models.URLField('Web', blank=True, null=True)
     telefono_laboral = models.CharField('Telefono Laboral', max_length=20, blank=True, null=True)
     categoria = models.IntegerField(choices=CATEGORIA, default=1)
+    activo = models.BooleanField(default=False)
+    pagado = models.BooleanField(default=False)
     def __str__(self):
         return(self.nombres + ' ' + self.apellido)
-    
