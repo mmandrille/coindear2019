@@ -2906,6 +2906,17 @@ section.inscripcion button:hover
    width: 100%;
 }
 
+section.inscripcion .respuesta-container
+{
+    background: #c3ccd1;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 10px;
+    padding: 0;
+    z-index: 1;
+    color: rgb(7, 7, 7);
+}
+
 /* FIN inscripcion */
 
 /* Registro */

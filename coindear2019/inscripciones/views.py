@@ -28,7 +28,7 @@ def inscripcion(request):
                         mail_subject, message, to=[to_email]
             )
             email.send()
-            return HttpResponse('Por Favor Confirme la creacion de su cuenta en el correo que recibio')
+            return render(request, 'resultado.html', {'texto': 'Por Favor Confirme la creacion de su cuenta en el correo que recibio', })
     else:
         form = InscriptoForm()
     return render(request, 'inscripcion.html', {'form': form, })
@@ -41,6 +41,6 @@ def activate(request, inscripto_id, token):
     if inscripto is not None and account_activation_token.check_token(inscripto, token):
         inscripto.activo = True
         inscripto.save()
-        return HttpResponse('Excelente! Su inscripcion fue validada.')
+        return render(request, 'resultado.html', {'texto': 'Excelente! Su inscripcion fue validada.', })
     else:
-        return HttpResponse('El link de activacion es invalido!')
+        return render(request, 'resultado.html', {'texto': 'El link de activacion es invalido!', })
