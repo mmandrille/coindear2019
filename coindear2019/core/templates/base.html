@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Pacto Social Educativo{% endblock %}</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+  </head>
+  <body id="body">
+    <header>
+      <nav class="navbar navbar-static-top">
+        <div class="container-fluid">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-mobile" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="header-logo" onclick="location.href='http://www.jujuy.gob.ar'" style="cursor: pointer">
+            <img src="{% static 'img/logo.png' %}" />
+          </div>
+            <div class="collapse navbar-collapse mobile-only" id="nav-mobile" style="display:none">
+              <ul class="nav navbar-nav">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/faq/">¿Que es Coindear?</a></li>
+                <li><a href="/calendario/">Agenda</a></li>
+                <li><a href="/contacto/">Contacto</a></li>
+                
+                {% if user.is_authenticated %}
+                <li class="bienvenido">Bienvenido, {{ user.get_full_name }} <small>{{ user.username }}</small>!</li>
+                {% if user.is_staff %}
+                <li><a href="/admin">Admin</a></li>
+                {% endif %}
+                <li><a href="{% url 'logout' %}">Salir</a></li>
+                {% else %}
+                <li class="btn-login"><a href="{% url 'login' %}">Ingresar</a></li><li><a href="{% url 'signup' %}">Registrarse</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/faq/">¿Que es Coindear?</a></li>
+                <li><a href="/calendario/">Agenda</a></li>
+                <li><a href="/contacto/">Contacto</a></li>
+                
+                {% if user.is_authenticated %}
+                <li class="bienvenido">Bienvenido, {{ user.get_full_name }} <small>{{ user.username }}</small>!</li>
+                {% if user.is_staff %}
+                <li><a href="/admin">Admin</a></li>
+                {% endif %}
+                <li><a href="{% url 'logout' %}">Salir</a></li>
+                {% else %}
+                <li class="btn-login nomob"><a href="{% url 'login' %}">Ingresar</a></li><li class="btn-register"><a href="{% url 'signup' %}">Registrarse</a></li>
+                {% endif %}
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </header>
+    
+    <div class="portada">
+        <img src="{% static 'img/header.jpg' %}" alt="">
+        <div class="mobile">
+            <img src="{% static 'img/header_text.jpg' %}" alt="">
+        </div>
+    </div>
+    
+    <main>
+      {% block content %}
+      
+      {% endblock %}
+        <br>
+        <footer>
+          <div class="social">
+            <a href="https://www.facebook.com/">
+             <span class="icon icon-facebook"></span>
+            </a>
+            <a href="https://twitter.com/">
+             <span class="icon icon-twitter"></span>
+            </a>
+            <a href="https://www.youtube.com/">
+             <span class="icon icon-youtube"></span>
+            </a>
+            <a href="https://www.instagram.com/">
+             <span class="icon icon-instagram"></span>
+            </a>
+          </div>
+          
+          <div class="row">
+          <div class="col-md-4 col-md-offset-1">
+            <div class="seguinos-titulo">
+              <p class="seguinos"><span>#Seguinos</span> en nuestras Redes Sociales</p>
+              <h4>CONVENCIÓN INTERNACIONAL DE ARCHIVISTAS</h4>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <img src="{% static 'img/logo.png' %}" class="logo"/>
+          </div>
+          <div class="col-md-3">
+            <img src="{% static 'img/logo2.png' %}" class="logo" style="margin-top: 10px"/>
+          </div>
+          </div>
+          
+        </footer>
+    </main>
+    
+    {% load static %}
+    <style type="text/css">
+      @font-face {
+        font-family: Archia;
+        font-weight: normal;
+        src: url({% static 'Archia-Regular.otf' %}) format('truetype');
+        src: local({% static 'Archia-Regular.otf' %}) format('truetype');
+     }
+      @font-face {
+        font-family: Archia;
+        font-weight: bold;
+        src: url({% static 'Archia-Bold.otf' %}) format('truetype');
+        src: local({% static 'Archia-Bold.otf' %}) format('truetype');
+     }
+      @font-face {
+        font-family: Archia;
+        font-weight: lighter;
+        src: url({% static 'Archia-Thin.otf' %}) format('truetype');
+        src: local({% static 'Archia-Thin.otf' %}) format('truetype');
+     }
+    </style>
+    
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
+  </body>
+</html>
