@@ -7,6 +7,9 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 
+#decoradores
+from django.contrib.admin.views.decorators import staff_member_required
+
 #Import Personales
 from .models import Inscriptos
 from .ModelForm import InscriptoForm
@@ -44,3 +47,29 @@ def activate(request, inscripto_id, token):
         return render(request, 'resultado.html', {'texto': 'Excelente! Su inscripcion fue validada.', })
     else:
         return render(request, 'resultado.html', {'texto': 'El link de activacion es invalido!', })
+
+#Load mails
+@staff_member_required
+def upload_csv(request):
+    count = 0
+    data = {}
+    if "GET" == request.method:
+        return render(request, "upload_csv.html", data)
+    # if not GET, then proceed
+    csv_file = request.FILES["csv_file"]
+    if not csv_file.name.endswith('.csv'):
+        messages.error(request,'File is not CSV type')
+        return HttpResponseRedirect(reverse("inscripciones:upload_csv"))
+        #if file is too large, return
+    if csv_file.multiple_chunks():
+        messages.error(request,"Uploaded file is too big (%.2f MB)." % (csv_file.size/(1000*1000),))
+        return HttpResponseRedirect(reverse("myapp:upload_csv"))
+        
+    file_data = csv_file.read().decode("utf-8")
+    lines = file_data.split("\n")
+    #loop over the lines and save them in db. If error , store as string and then display
+    for line in lines:
+        m = Mails(email=line)
+        m.save()
+        count+= 1
+    return render(request, 'upload_csv.html', {'count': count, })
