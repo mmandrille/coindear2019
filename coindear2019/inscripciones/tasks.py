@@ -5,7 +5,7 @@ from django.template.loader import render_to_string
 
 #Import Personales
 from .models import Mails, Mensajes
-
+from .functions import delete_tags
 #Primer tarea
 @background(schedule=60)
 def crear_100_mails(lista_mails):
@@ -23,11 +23,12 @@ def enviar_50_mails(msj_id, lista_mails):
     connection = mail.get_connection()
     connection.open()
     #Instanciamos el objeto email
-    msj_cuerpo = render_to_string('email_base.html', {
+    msj_simple = delete_tags(mensaje.cuerpo)
+    email = mail.EmailMultiAlternatives(mensaje.titulo, msj_simple, 'coindear2019@jujuy.gob.ar',
+                          bcc=lista_mails, connection=connection)
+    msj_html = render_to_string('email_base.html', {
                 'mensaje': mensaje,
                 })
-    print(msj_cuerpo)
-    email = mail.EmailMessage(mensaje.titulo, msj_cuerpo, 'coindear2019@jujuy.gob.ar',
-                          lista_mails, connection=connection)
+    email.attach_alternative(msj_html, "text/html")
     #Lo mandamos
     email.send()
