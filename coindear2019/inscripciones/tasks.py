@@ -16,7 +16,7 @@ def crear_100_mails(lista_mails):
     print("Tarea Realizada, ultimo mail creado: " + str(lista_mails[-1]))
 
 @background(schedule=60)
-def enviar_50_mails(msj_id, lista_mails):
+def enviar_mails(msj_id, lista_mails):
     #Obtenemos el mensaje:
     mensaje = Mensajes.objects.get(pk=msj_id)
     #Abrimos el envio de correos

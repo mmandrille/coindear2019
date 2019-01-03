@@ -48,7 +48,6 @@ main {
 .portada
 {
     /*background-image: url(../img/header.jpg);*/
-    height: 200px;
     background-size: cover;
     box-shadow: 0 0 30px #1c4d657a;
     overflow: hidden;
@@ -56,7 +55,7 @@ main {
     width: auto;
 }
     .portada img{
-        height: 200px;
+        width: 70%;
         /*height: 230px; !* Resolución monitor 21' *!*/
     }
 
