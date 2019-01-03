@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
@@ -56,7 +57,7 @@ def test_mail(request, msj_id):
     return render(request, 'email_base.html', {'mensaje': mail, })
 
 @staff_member_required
-def upload_csv(request):
+def upload_csv_mails(request):
     count = 0
     data = {}
     if "GET" == request.method:
@@ -76,12 +77,12 @@ def upload_csv(request):
     #loop over the lines and save them in db. If error , store as string and then display
     #llamar funcion cada 100 mails.
     count = 0
-    new_queue = crear_progress_link("CrearMails")
+    new_queue = crear_progress_link("CrearMails:"+str(datetime.now()).replace(" ", ">")[0:16])
     while (count + 100) < len(lines):
         crear_mails(lines[count:count+100], schedule=int(count/10), queue=new_queue)
         count+=100
     crear_mails(lines[count:len(lines)], schedule=int(count/10), queue=new_queue)
-    return render(request, 'upload_csv.html', {'count': count, })
+    return render(request, 'upload_csv.html', {'count': len(lines), 'new_queue': new_queue })
 
 def task_progress(request, queue_name):
     tareas_en_progreso = bg_Tasks.objects.filter(queue= queue_name)

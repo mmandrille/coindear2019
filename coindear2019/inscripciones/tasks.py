@@ -23,7 +23,7 @@ def crear_mails(lista_mails):
     crear_mails = list()
     for mail in lista_mails:
         crear_mails.append(Mails(email=str(mail)))
-        Mails.objects.bulk_create(crear_mails)
+    Mails.objects.bulk_create(crear_mails)
 
 @background(schedule=60)
 def enviar_mails(msj_id, lista_mails):

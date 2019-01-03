@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
     {% if count %}
-        <p> Se lograron Cargar {{ count }} Correos que comenzaran a guardarse en la lista del boletin. </p>
+        <p>Se lograron Cargar {{ count }} Correos que comenzaran a guardarse en la lista del boletin. </p>
+        <P>Puede observar el avance del proceso <a href='/inscribir/task_progress/{{ new_queue }}'>aqui</a></p>
     {% else %}
-        <form action="{% url "inscripciones:upload_csv" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
+        <form action="{% url "inscripciones:upload_csv_mails" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
         {% csrf_token %}
         <div class="form-group">
             <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
