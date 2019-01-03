@@ -12,7 +12,7 @@ from django.core.management import call_command
 from django.contrib.admin.views.decorators import staff_member_required
 
 #Import Personales
-from .models import Inscriptos
+from .models import Inscriptos, Mensajes
 from .ModelForm import InscriptoForm
 from .tokens import account_activation_token
 from .tasks import crear_100_mails
@@ -49,6 +49,10 @@ def activate(request, inscripto_id, token):
         return render(request, 'resultado.html', {'texto': 'Excelente! Su inscripcion fue validada.', })
     else:
         return render(request, 'resultado.html', {'texto': 'El link de activacion es invalido!', })
+
+def test_mail(request, msj_id):
+    mail = Mensajes.objects.get(pk=msj_id)
+    return render(request, 'email_base.html', {'mensaje': mail, })
 
 @staff_member_required
 def upload_csv(request):
