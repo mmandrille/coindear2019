@@ -2822,6 +2822,7 @@ background: url(./img/tilcara.jpg);
     height: calc(70vh - 100px);
     padding-top: 7em;
     background-size: cover;
+    display: table;
 }
 
 section.inscripcion .inscripcion-container
@@ -2914,6 +2915,67 @@ section.inscripcion .respuesta-container
     padding: 0;
     z-index: 1;
     color: rgb(7, 7, 7);
+}
+
+/* FIN inscripcion */
+
+/* inscripcion */
+
+
+section.progreso
+{
+background: url(./img/tilcara.jpg);
+    width: 100%;
+    height: 100%;
+    height: calc(70vh - 100px);
+    padding-top: 7em;
+    background-size: cover;
+    display: table;
+}
+
+section.progreso .progreso-container
+{
+    background: #99b3c0;
+    max-width: 60%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 0;
+    z-index: 1;
+    color: rgb(7, 7, 7); 
+}
+
+section.progreso .progreso-container h2
+{
+    background: #7a929e;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+section.progreso .progreso-container progress
+{
+    height: 40px;
+    width: 90%;
+    color: rgb(48, 170, 88);
+
+}
+  
+section.progreso .progreso-container progress::-webkit-progress-value {
+    background: rgb(48, 170, 88);
+}
+  
+section.progreso .progreso-container progress::-moz-progress-bar {
+    background: lightcolor;
+}
+  
+section.progreso .progreso-container progress::-webkit-progress-value {
+    background: red;
+}
+  
+section.progreso .progreso-container progress::-webkit-progress-bar {
+    background: blue;
 }
 
 /* FIN inscripcion */

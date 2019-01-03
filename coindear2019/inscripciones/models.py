@@ -68,26 +68,9 @@ class Mensajes(models.Model):
     titulo = models.CharField('Titulo', max_length=50)
     cuerpo = HTMLField()
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
-    terminado = models.BooleanField(default=False)
-    #Crear super save para llamar a enviar mails.
-    def save(self, *args, **kwargs):
-        from .tasks import enviar_mails
-        #Conseguimos la lista de destinatarios
-        mail_list = list()
-        if self.destinatarios == 0:
-            mail_list = [self.autor.email]
-        elif self.destinatarios == 1:
-            for u in User.objects.all(): mail_list.append(u.email)
-        elif self.destinatarios == 2:
-            for u in Inscriptos.objects.all(): mail_list.append(u.email)
-        elif self.destinatarios == 3:
-            for u in Mails.objects.filter(valido=True): mail_list.append(u.email)
-        elif self.destinatarios == 4:
-            for u in Mails.objects.all(): mail_list.append(u.email)
-        #empezamos a bulkear y creamos las background tasks!
-        count = 0
-        while (count + self.cantidad) < len(mail_list):
-            enviar_mails(msj_id=self.id, lista_mails=mail_list[count:(count+self.cantidad)], schedule=int(count/10), queue="EnviarMails")
-            count=+self.cantidad
-        enviar_mails(msj_id=self.id, lista_mails=mail_list[count:len(mail_list)], schedule=int(count/10), queue="EnviarMails")
-        super(Mensajes, self).save(*args, **kwargs)
+    enviado = models.BooleanField(default=False)
+
+class Progress_Links(models.Model):
+    tarea = models.CharField('Tarea', max_length=50)
+    inicio = models.DateTimeField(default=now)
+    progress_url = models.URLField('Web', blank=True, null=True)

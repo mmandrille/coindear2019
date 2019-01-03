@@ -6,7 +6,9 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
-
+#Task Manager Models
+from background_task.models import Task as bg_Tasks
+from background_task.models_completed import CompletedTask as bg_CompletedTask
 #decoradores
 from django.contrib.admin.views.decorators import staff_member_required
 
@@ -14,7 +16,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from .models import Inscriptos, Mensajes
 from .ModelForm import InscriptoForm
 from .tokens import account_activation_token
-from .tasks import crear_100_mails
+from .tasks import crear_mails, crear_progress_link
 
 # Create your views here.
 def inscripcion(request):
@@ -74,8 +76,18 @@ def upload_csv(request):
     #loop over the lines and save them in db. If error , store as string and then display
     #llamar funcion cada 100 mails.
     count = 0
+    new_queue = crear_progress_link("CrearMails")
     while (count + 100) < len(lines):
-        crear_100_mails(lines[count:count+100], schedule=int(count/10), queue=str(count))
+        crear_mails(lines[count:count+100], schedule=int(count/10), queue=new_queue)
         count+=100
-    crear_100_mails(lines[count:len(lines)], schedule=int(count/10), queue="CrearMails")
+    crear_mails(lines[count:len(lines)], schedule=int(count/10), queue=new_queue)
     return render(request, 'upload_csv.html', {'count': count, })
+
+def task_progress(request, queue_name):
+    tareas_en_progreso = bg_Tasks.objects.filter(queue= queue_name)
+    tareas_terminadas = bg_CompletedTask.objects.filter(queue= queue_name)
+    return render(request, 'task_progress.html', {'tarea_queue': queue_name, 
+                                                'tareas_totales': (len(tareas_en_progreso)+len(tareas_terminadas)) ,
+                                                'tareas_en_cola': len(tareas_en_progreso), 
+                                                'tareas_terminadas': len(tareas_terminadas),
+                                                "refresh": True })

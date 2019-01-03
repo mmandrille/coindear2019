@@ -2,18 +2,28 @@
 from background_task import background
 from django.core import mail
 from django.template.loader import render_to_string
+from coindear2019.settings import EMAIL_HOST_USER
 
 #Import Personales
-from .models import Mails, Mensajes
+from .models import Mails, Mensajes, Progress_Links
 from .functions import delete_tags
-#Primer tarea
+
+#Rutinas Base:
+def crear_progress_link(new_queue):
+    print("Se creo link a: " + new_queue)
+    p = Progress_Links()
+    p.nombre = new_queue
+    p.progress_url = '/inscribir/task_progress/' + new_queue
+    p.save()
+    return new_queue
+
+#Tareas
 @background(schedule=60)
-def crear_100_mails(lista_mails):
+def crear_mails(lista_mails):
     crear_mails = list()
     for mail in lista_mails:
         crear_mails.append(Mails(email=str(mail)))
         Mails.objects.bulk_create(crear_mails)
-    print("Tarea Realizada, ultimo mail creado: " + str(lista_mails[-1]))
 
 @background(schedule=60)
 def enviar_mails(msj_id, lista_mails):
@@ -24,7 +34,7 @@ def enviar_mails(msj_id, lista_mails):
     connection.open()
     #Instanciamos el objeto email
     msj_simple = delete_tags(mensaje.cuerpo)
-    email = mail.EmailMultiAlternatives(mensaje.titulo, msj_simple, 'coindear2019@jujuy.gob.ar',
+    email = mail.EmailMultiAlternatives(mensaje.titulo, msj_simple, EMAIL_HOST_USER,
                           bcc=lista_mails, connection=connection)
     msj_html = render_to_string('email_base.html', {
                 'mensaje': mensaje,
