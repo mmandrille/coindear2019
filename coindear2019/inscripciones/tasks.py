@@ -12,7 +12,7 @@ from .functions import delete_tags
 def crear_progress_link(new_queue):
     print("Se creo link a: " + new_queue)
     p = Progress_Links()
-    p.nombre = new_queue
+    p.tarea = new_queue
     p.progress_url = '/inscribir/task_progress/' + new_queue
     p.save()
     return new_queue
