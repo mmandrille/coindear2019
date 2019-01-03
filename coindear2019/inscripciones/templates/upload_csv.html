@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     {% if count %}
-        <p> Se lograron Cargar {{ count }} Correos </p>
+        <p> Se lograron Cargar {{ count }} Correos que comenzaran a guardarse en la lista del boletin. </p>
     {% else %}
         <form action="{% url "inscripciones:upload_csv" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
         {% csrf_token %}

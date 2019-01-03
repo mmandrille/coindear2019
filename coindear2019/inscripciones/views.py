@@ -6,6 +6,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
+from django.core.management import call_command
 
 #decoradores
 from django.contrib.admin.views.decorators import staff_member_required
@@ -14,6 +15,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from .models import Inscriptos
 from .ModelForm import InscriptoForm
 from .tokens import account_activation_token
+from .tasks import crear_100_mails
 
 # Create your views here.
 def inscripcion(request):
@@ -48,7 +50,6 @@ def activate(request, inscripto_id, token):
     else:
         return render(request, 'resultado.html', {'texto': 'El link de activacion es invalido!', })
 
-#Load mails
 @staff_member_required
 def upload_csv(request):
     count = 0
@@ -68,8 +69,10 @@ def upload_csv(request):
     file_data = csv_file.read().decode("utf-8")
     lines = file_data.split("\n")
     #loop over the lines and save them in db. If error , store as string and then display
-    for line in lines:
-        m = Mails(email=line)
-        m.save()
-        count+= 1
+    #llamar funcion cada 100 mails.
+    count = 0
+    while (count + 100) < len(lines):
+        crear_100_mails(lines[count:count+100], schedule=int(count/10), queue=str(count))
+        count+=100
+    crear_100_mails(lines[count:len(lines)], schedule=int(count/10), queue="CrearMails")
     return render(request, 'upload_csv.html', {'count': count, })

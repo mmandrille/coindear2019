@@ -1,4 +1,9 @@
 from django.db import models
+from tinymce.models import HTMLField
+from django.contrib.auth.models import User
+from django.utils.timezone import now
+
+#Import Personales
 
 #Creamos choices
 CATEGORIA = (
@@ -12,6 +17,13 @@ TIPO_DOC= (
         (3, 'Libreta de Enrolamiento'),
         (4, 'Libreta Cívica'),
         (5, 'Pasaporte'),
+    )
+
+DESTINO = (
+        (0, 'Usuarios Registrados'),
+        (1, 'Inscriptos'),
+        (2, 'Correos Validados'),
+        (3, 'Correos Sin Validar > Masivo'),
     )
 
 # Create your models here.
@@ -40,3 +52,37 @@ class Inscriptos(models.Model):
     pagado = models.BooleanField(default=False)
     def __str__(self):
         return(self.nombres + ' ' + self.apellido)
+
+class Mails(models.Model):
+    email = models.EmailField('Correo Electronico', blank=True, null=True)
+    valido = models.BooleanField(default=False)
+    def __str__(self):
+        return(self.email)
+
+class Mensajes(models.Model):
+    nombre = models.CharField('Nombres', max_length=50)
+    destinatarios = models.IntegerField(choices=DESTINO, default=0)
+    programar = models.DateTimeField(default=now)
+    titulo = models.CharField('Titulo', max_length=50)
+    cuerpo = HTMLField()
+    terminado = models.BooleanField(default=False)
+    #Crear super save para llamar a enviar mails.
+    def save(self, *args, **kwargs):
+        from .tasks import enviar_50_mails
+        #Conseguimos la lista de destinatarios
+        mail_list = list()
+        if self.destinatarios == 0:
+            for u in User.objects.all(): mail_list.append(u.email)
+        elif self.destinatarios == 1:
+            for u in Inscriptos.objects.all(): mail_list.append(u.email)
+        elif self.destinatarios == 2:
+            for u in Mails.objects.filter(valido=True): mail_list.append(u.email)
+        elif self.destinatarios == 3:
+            for u in Mails.objects.all(): mail_list.append(u.email)
+        #empezamos a bulkear y creamos las background tasks!
+        count = 0
+        while (count + 50) < len(mail_list):
+            enviar_50_mails(msj_id=self.id, lista_mails=mail_list[count:(count+50)], schedule=int(count/10), queue="EnviarMails")
+            count=+50
+        enviar_50_mails(msj_id=self.id, lista_mails=mail_list[count:len(mail_list)], schedule=int(count/10), queue="EnviarMails")
+        super(Mensajes, self).save(*args, **kwargs)
