@@ -58,7 +58,10 @@
                 {% endif %}
                 <li><a href="{% url 'logout' %}">Salir</a></li>
                 {% else %}
-                <li class="btn-login nomob"><a href="{% url 'login' %}">Ingresar</a></li><li class="btn-register"><a href="{% url 'signup' %}">Registrarse</a></li>
+                <li class="btn-login nomob"><a href="{% url 'login' %}">Ingresar</a></li>
+                <!-- /No ofrecer Registro
+                  <li class="btn-register"><a href="{% url 'signup' %}">Registrarse</a></li>
+                 -->
                 {% endif %}
             </ul>
           </div><!-- /.navbar-collapse -->
