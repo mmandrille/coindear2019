@@ -70,7 +70,7 @@ def upload_csv_mails(request):
         #if file is too large, return
     if csv_file.multiple_chunks():
         messages.error(request,"Uploaded file is too big (%.2f MB)." % (csv_file.size/(1000*1000),))
-        return HttpResponseRedirect(reverse("myapp:upload_csv"))
+        return HttpResponseRedirect(reverse("inscripciones:upload_csv"))
         
     file_data = csv_file.read().decode("utf-8")
     lines = file_data.split("\n")

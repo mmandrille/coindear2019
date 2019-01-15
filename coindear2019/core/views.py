@@ -15,7 +15,7 @@ def contacto(request):
     return render(request, 'contacto.html', { })
 
 def faq(request):
-    faqs = Faq.objects.all()
+    faqs = Faq.objects.all().order_by('orden')
     return render(request, 'faq.html', {'faqs' : faqs })
 
 def signup(request):
