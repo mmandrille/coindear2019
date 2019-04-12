@@ -39,8 +39,12 @@ class MensajesAdmin(admin.ModelAdmin):
     ordering = ['nombre']
     actions = [enviar_mail]
 
+
+class InscriptosAdmin(admin.ModelAdmin):
+    list_filter = ['activo',]
+
 # Register your models here.
-admin.site.register(Inscriptos)
+admin.site.register(Inscriptos, InscriptosAdmin)
 admin.site.register(Mensajes, MensajesAdmin)
 admin.site.register(Mails)
 admin.site.register(Progress_Links)
