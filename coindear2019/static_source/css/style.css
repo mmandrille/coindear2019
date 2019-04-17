@@ -3388,3 +3388,36 @@ section.pagina-registro hr{
         background-position-y: -200px !important;
     }
 }
+
+#Particulares
+  .linea_inscripto {
+    width: 100%;
+  }
+  
+  .linea_relleno{
+    display: inline-block;
+    width: 10%;
+}
+
+  .linea_nombre{
+    display: inline-block;
+    width: 25%;
+}
+  
+  .linea_documento {
+    display: inline-block;
+    width: 10%;
+    text-align: center;
+  }
+
+  .linea_telefono {
+    display: inline-block;
+    width: 10%;
+    text-align: center;
+  }
+
+  .linea_email {
+    display: inline-block;
+    width: 25%;
+    text-align: left;
+  }

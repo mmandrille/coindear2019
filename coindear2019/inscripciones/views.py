@@ -92,3 +92,9 @@ def task_progress(request, queue_name):
                                                 'tareas_en_cola': len(tareas_en_progreso), 
                                                 'tareas_terminadas': len(tareas_terminadas),
                                                 "refresh": True })
+
+@staff_member_required
+def mostrar_inscriptos(request):
+    tipo_usuario = [True, False]
+    inscriptos = Inscriptos.objects.all().order_by('-apellido')
+    return render(request, 'inscriptos.html', {'inscriptos': inscriptos, 'tipo_usuario': tipo_usuario })
