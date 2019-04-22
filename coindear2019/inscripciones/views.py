@@ -7,6 +7,8 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
+#Import Particulares
+import csv
 #Task Manager Models
 from background_task.models import Task as bg_Tasks
 from background_task.models_completed import CompletedTask as bg_CompletedTask
@@ -98,3 +100,21 @@ def mostrar_inscriptos(request):
     tipo_usuario = [True, False]
     inscriptos = Inscriptos.objects.all().order_by('-apellido')
     return render(request, 'inscriptos.html', {'inscriptos': inscriptos, 'tipo_usuario': tipo_usuario })
+
+@staff_member_required
+def mostrar_tabla_inscriptos(request):
+    tipo_usuario = [True, False]
+    inscriptos = Inscriptos.objects.all().order_by('-apellido')
+    return render(request, 'inscriptos_tabla.html', {'inscriptos': inscriptos, 'tipo_usuario': tipo_usuario })
+
+@staff_member_required
+def descargar_inscriptos(request):
+    #Obtenemos todos los inscriptos
+    inscriptos = Inscriptos.objects.all().order_by('-apellido')
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="listado_inscriptos.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['Apellido', 'Nombre','Dni', 'Telefono', 'Correo Electronico', 'Validado'])
+    for inscripto in inscriptos:
+        writer.writerow([inscripto.apellido, inscripto.nombres, inscripto.num_doc, inscripto.telefono, inscripto.email, inscripto.activo])
+    return response

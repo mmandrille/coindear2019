@@ -10,6 +10,9 @@ urlpatterns = [
     url(r'^upload/csv/$', views.upload_csv_mails, name='upload_csv_mails'),
 
     path('listado', views.mostrar_inscriptos, name='mostrar_inscriptos'),
+    path('tabla', views.mostrar_tabla_inscriptos, name='mostrar_tabla_inscriptos'),
+    path('download_excel', views.descargar_inscriptos, name='descargar_inscriptos'),
+
     path('testmail/<int:msj_id>', views.test_mail, name='test_mail'),
     path('task_progress/<str:queue_name>', views.task_progress, name='task_progress'),
 ]

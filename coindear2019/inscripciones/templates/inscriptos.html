@@ -3,7 +3,17 @@
 {% block title %}Resultado{% endblock %}
 
 {% block content %}
-  <h1><b>Listado de Incriptos</b></h1>
+  <div class="linea_inscripto">
+    <div class="linea_nombre">
+      <h1><b>Listado de Incriptos</b></h1>
+    </div>
+    <div class="linea_telefono">
+      <a href="tabla">Ver en tabla simple</a>
+    </div>
+    <div class="linea_email">
+      <a href="download_excel">Descargar Excel</a>
+    </div>
+  </div>
   <div class="inscriptos">
     {% for tipo in tipo_usuario %}
       {% if tipo %}
